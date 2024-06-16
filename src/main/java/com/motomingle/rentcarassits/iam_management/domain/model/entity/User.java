@@ -1,5 +1,6 @@
 package com.motomingle.rentcarassits.iam_management.domain.model.entity;
 
+import com.motomingle.rentcarassits.subscription_management.domain.model.entity.Subscription;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -52,5 +53,7 @@ public class User {
     @Column(name = "profile_picture")
     private String profilePicture;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
+    private Subscription subscription;
 }
