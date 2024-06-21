@@ -5,7 +5,6 @@ import com.motomingle.rentcarassits.iam_management.resource.CreateVehicleResourc
 import com.motomingle.rentcarassits.iam_management.resource.UpdateVehicleResource;
 import com.motomingle.rentcarassits.iam_management.resource.VehicleResource;
 import com.motomingle.rentcarassits.shared.mapping.EnhancedModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
