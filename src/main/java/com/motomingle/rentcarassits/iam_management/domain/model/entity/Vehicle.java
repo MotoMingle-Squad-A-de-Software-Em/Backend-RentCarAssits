@@ -1,8 +1,7 @@
 package com.motomingle.rentcarassits.iam_management.domain.model.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter
@@ -18,42 +17,38 @@ public class Vehicle {
     private Long id;
 
     @NotBlank
-    @NotNull
     @Column(name = "model")
     private String model;
 
     @NotBlank
-    @NotNull
     @Column(name = "brand")
     private String brand;
 
     @NotBlank
-    @NotNull
     @Column(name = "address")
     private String address;
 
-    @NotBlank
+    @Min(1)
     @NotNull
     @Column(name = "seats")
     private int seats;
 
-    @NotBlank
+    @DecimalMin(value = "0.0", inclusive = true)
+    @DecimalMax(value = "5.0", inclusive = true)
     @NotNull
     @Column(name = "stars")
     private float stars;
 
     @NotBlank
-    @NotNull
     @Column(name = "features")
     private String features;
 
-    @NotBlank
     @NotNull
+    @Min(0)
     @Column(name = "price")
     private float price;
 
     @NotBlank
-    @NotNull
     @Column(name = "vehicle_picture")
     private String vehiclePicture;
 }

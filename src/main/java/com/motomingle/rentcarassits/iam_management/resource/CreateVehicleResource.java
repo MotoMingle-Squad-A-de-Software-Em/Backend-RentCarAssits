@@ -1,7 +1,6 @@
 package com.motomingle.rentcarassits.iam_management.resource;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter
@@ -11,34 +10,30 @@ import lombok.*;
 @AllArgsConstructor
 public class CreateVehicleResource {
     @NotBlank
-    @NotNull
     private String model;
 
     @NotBlank
-    @NotNull
     private String brand;
 
     @NotBlank
-    @NotNull
     private String address;
 
-    @NotBlank
+    @Min(1)
     @NotNull
     private int seats;
 
-    @NotBlank
+    @DecimalMin(value = "0.0", inclusive = true)
+    @DecimalMax(value = "5.0", inclusive = true)
     @NotNull
     private float stars;
 
     @NotBlank
-    @NotNull
     private String features;
 
-    @NotBlank
     @NotNull
+    @Min(0)
     private float price;
 
     @NotBlank
-    @NotNull
     private String vehiclePicture;
 }
