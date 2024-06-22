@@ -15,8 +15,14 @@ import java.util.List;
 @Component
 public class BookingMapper implements Serializable {
 
+    private final EnhancedModelMapper mapper;
+
     @Autowired
-    private EnhancedModelMapper mapper;
+    public BookingMapper(EnhancedModelMapper mapper) {
+        this.mapper = mapper;
+        // Registrar el PropertyMap aquí
+        this.mapper.addMappings(new CreateBookingResourceToBookingMap());
+    }
 
     public BookingResource toResource(Booking model) {
         return mapper.map(model, BookingResource.class);
