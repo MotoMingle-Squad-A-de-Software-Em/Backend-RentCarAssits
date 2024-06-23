@@ -20,7 +20,6 @@ public class BookingMapper implements Serializable {
     @Autowired
     public BookingMapper(EnhancedModelMapper mapper) {
         this.mapper = mapper;
-        // Registrar el PropertyMap aquí
         this.mapper.addMappings(new CreateBookingResourceToBookingMap());
     }
 
