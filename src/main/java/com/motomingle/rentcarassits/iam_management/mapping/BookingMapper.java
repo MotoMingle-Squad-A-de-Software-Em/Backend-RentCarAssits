@@ -21,6 +21,7 @@ public class BookingMapper implements Serializable {
     public BookingMapper(EnhancedModelMapper mapper) {
         this.mapper = mapper;
         this.mapper.addMappings(new CreateBookingResourceToBookingMap());
+        this.mapper.addMappings(new UpdateBookingResourceToBookingMap());
     }
 
     public BookingResource toResource(Booking model) {

@@ -31,9 +31,9 @@ public class VehicleController {
 
     @Operation(summary = "Get all vehicles", description = "Get all vehicles stored in the database.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Vehicle found",
-            content = { @Content(mediaType = "application/json",
-            schema = @Schema(implementation = VehicleResource.class))})
+            @ApiResponse(responseCode = "200", description = "Vehicles found",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = VehicleResource.class))})
     })
     @GetMapping
     public Page<VehicleResource> getAllVehicles(Pageable pageable) {
@@ -43,8 +43,8 @@ public class VehicleController {
     @Operation(summary = "Get vehicle by Id", description = "Get vehicle by Id.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vehicle found",
-            content = { @Content(mediaType = "application/json",
-            schema = @Schema(implementation = VehicleResource.class))})
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = VehicleResource.class))})
     })
     @GetMapping("{vehicleId}")
     public VehicleResource getVehicleById(@PathVariable Long vehicleId) {
@@ -53,9 +53,9 @@ public class VehicleController {
 
     @Operation(summary = "Create vehicle", description = "Create vehicle in the database.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Vehicle created",
-            content = { @Content(mediaType = "application/json",
-            schema = @Schema(implementation = VehicleResource.class))})
+            @ApiResponse(responseCode = "201", description = "Vehicle created",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = VehicleResource.class))})
     })
     @PostMapping()
     public VehicleResource createVehicle(@RequestBody CreateVehicleResource resource) {
@@ -65,20 +65,20 @@ public class VehicleController {
     @Operation(summary = "Update vehicle", description = "Update vehicle in the database.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vehicle updated",
-            content = { @Content(mediaType = "application/json",
-            schema = @Schema(implementation = VehicleResource.class))})
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = VehicleResource.class))})
     })
-    @PutMapping()
+    @PutMapping("{vehicleId}")
     public VehicleResource updateVehicle(@PathVariable Long vehicleId, @RequestBody UpdateVehicleResource resource) {
         return vehicleMapper.toResource(vehicleService.updateVehicle(vehicleId, vehicleMapper.toModel(resource)));
     }
 
-    @Operation(summary = "Delete vehicle", description = "Delete vehicle in the database.")
+    @Operation(summary = "Delete vehicle", description = "Delete vehicle from the database.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Vehicle deleted",
-            content = @Content(mediaType = "application/json"))
+                    content = @Content(mediaType = "application/json"))
     })
-    @DeleteMapping()
+    @DeleteMapping("{vehicleId}")
     public ResponseEntity<?> deleteVehicle(@PathVariable Long vehicleId) {
         return vehicleService.deleteVehicle(vehicleId);
     }
