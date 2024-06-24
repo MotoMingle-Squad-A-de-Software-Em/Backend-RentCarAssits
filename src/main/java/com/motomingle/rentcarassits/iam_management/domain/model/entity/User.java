@@ -52,8 +52,4 @@ public class User {
     @NotNull
     @Column(name = "profile_picture")
     private String profilePicture;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
-    private Subscription subscription;
 }
